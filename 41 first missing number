@@ -1,0 +1,30 @@
+class Solution {
+    public int firstMissingPositive(int[] nums) {
+        Arrays.sort(nums);
+        int temp[]=new int[nums.length];
+        temp[0]=nums[0];
+        int j=0;
+        for(int p=0;p<nums.length-1;p++){
+            if(nums[p]!=nums[p+1]){
+               temp[j++]=nums[p] ;
+            }
+        }
+        temp[j++]=nums[nums.length-1];
+        Arrays.sort(temp);
+        int t=temp[nums.length-1];
+        int p=1,s=1;
+        for(int i=0;i<temp.length;i++){
+            if(temp[i]>0){
+                if(temp[i]!=s){
+                    p=s;
+                    break;
+                }
+                else{
+                    p=t+1;
+                }
+                s++;
+            }
+        }
+        return p;
+    }
+}
