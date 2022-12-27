@@ -4,6 +4,7 @@ class Solution {
 
         for(int i=0;i<s.length();i++){
            prev=t.indexOf(s.charAt(i),prev+1);
+           //if character is not present then it will give -1 by default
            if(prev==-1) return false;
         }
         return true;
